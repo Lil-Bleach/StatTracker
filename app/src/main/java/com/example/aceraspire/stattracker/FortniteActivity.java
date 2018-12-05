@@ -84,13 +84,13 @@ public class FortniteActivity extends AppCompatActivity
         if (id == R.id.nav_overwatch) {
             // Handle the overwatch tab action
             // getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new overwatch_frag()).commit();
-            startActivity(new Intent(getApplicationContext(),OWActivity.class));
+            startActivity(new Intent(getApplicationContext(), OWActivity.class));
         } else if (id == R.id.nav_fortnite) {
             // Handle the Fortnite Screens
             // getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new fortnite_frag()).commit();
             startActivity(new Intent(getApplicationContext(), FortniteActivity.class));
-        } else if (id == R.id.nav_slideshow) {
-
+        } else if (id == R.id.fortnite_stats) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fortnite_frag_container, new fortnite_frag()).commit();
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
