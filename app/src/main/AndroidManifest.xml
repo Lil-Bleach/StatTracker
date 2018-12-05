@@ -22,6 +22,10 @@
         <activity
             android:name=".OWActivity"
             android:label="@string/title_activity_ow"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FortniteActivity"
+            android:label="@string/title_activity_fortnight"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
