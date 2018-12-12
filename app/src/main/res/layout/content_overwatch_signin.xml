@@ -38,11 +38,9 @@
     <TextView
         android:id="@+id/textView3"
         android:layout_width="209dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginBottom="6dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="6dp"
         android:text="name-number"
-        app:layout_constraintBottom_toTopOf="@+id/ow_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -57,4 +55,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ow_input" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="67dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="314dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/ow_icon" />
+
 </android.support.constraint.ConstraintLayout>
