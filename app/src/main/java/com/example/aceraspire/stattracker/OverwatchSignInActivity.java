@@ -22,19 +22,22 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONObject;
 
+import org.json.JSONObject;
 
 public class OverwatchSignInActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
 
     private String userinfo;
     EditText userinfoInput;
     TextView output;
     Button submit;
-    private int textboxid;
     private String url;
+    /** something idk */
     private static RequestQueue requestQueue;
+    /** Json String */
+    private String jsonString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,8 @@ public class OverwatchSignInActivity extends AppCompatActivity
                 url = "https://ow-api.com/v1/stats/pc/us/" + userinfo + "/profile";
                 System.out.println(url);
                 startAPICall();
+
+
             }
         });
         /*
@@ -96,6 +101,7 @@ public class OverwatchSignInActivity extends AppCompatActivity
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(final JSONObject response) {
+                            jsonString = response.toString();
                             output.setText(response.toString()); //set text for text view
                         }
                     }, new Response.ErrorListener() {
@@ -144,4 +150,5 @@ public class OverwatchSignInActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
