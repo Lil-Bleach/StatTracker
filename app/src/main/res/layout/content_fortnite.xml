@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".FortniteActivity"
-    tools:showIn="@layout/app_bar_fortnight">
+    tools:showIn="@layout/app_bar_fortnite">
 
     <FrameLayout
         android:id="@+id/fortnite_frag_container"
@@ -19,40 +19,26 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/stats" />
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar3"
-        android:layout_width="386dp"
-        android:layout_height="55dp"
-        android:layout_marginEnd="8dp"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
+    <Button
+        android:id="@+id/stats"
+        android:layout_width="192dp"
+        android:layout_height="61dp"
+        android:text="Stats"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="1dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="358dp"
-        android:layout_height="36dp"
-        tools:layout_editor_absoluteX="15dp"
-        tools:layout_editor_absoluteY="10dp">
-
-        <android.support.design.widget.TabItem
-            android:id="@+id/fortnite_stats"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Stats" />
-
-        <android.support.design.widget.TabItem
-            android:id="@+id/tabItem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Match History" />
-
-    </android.support.design.widget.TabLayout>
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="192dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/stats"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
