@@ -46,7 +46,7 @@
         android:layout_marginBottom="25dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="Tohsaka-11149"
         app:layout_constraintBottom_toTopOf="@+id/FN_send"
         app:layout_constraintEnd_toEndOf="@+id/stats"
         app:layout_constraintStart_toEndOf="@+id/stats"
