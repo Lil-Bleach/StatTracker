@@ -8,23 +8,12 @@
     tools:context=".FortniteActivity"
     tools:showIn="@layout/app_bar_fortnite">
 
-    <FrameLayout
-        android:id="@+id/fortnite_frag_container"
-        android:layout_width="326dp"
-        android:layout_height="424dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stats" />
-
     <Button
         android:id="@+id/stats"
         android:layout_width="192dp"
         android:layout_height="61dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
         android:text="Stats"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,12 +22,20 @@
         android:id="@+id/button2"
         android:layout_width="192dp"
         android:layout_height="61dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/stats"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <fragment
+        android:id="@+id/fragment2"
+        android:name="com.example.aceraspire.stattracker.fortnite_frag"
+        android:layout_width="394dp"
+        android:layout_height="525dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
 </android.support.constraint.ConstraintLayout>

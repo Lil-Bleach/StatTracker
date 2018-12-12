@@ -30,7 +30,14 @@ public class FortniteActivity extends AppCompatActivity
         final Button fortniteStats = findViewById(R.id.stats);
         fortniteStats.setOnClickListener(new View.OnClickListener() {
             public void onClick(final View v) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fortnite_frag_container, new fortnite_frag()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment2, new fortnite_frag()).commit();
+            }
+        });
+
+        final Button owStats = findViewById(R.id.button2);
+        owStats.setOnClickListener(new View.OnClickListener() {
+            public void onClick(final View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment2, new overwatch_frag()).commit();
             }
         });
 
