@@ -3,15 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_overwatch"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="OW" />
-        <item
-            android:id="@+id/nav_fortnite"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="FN" />
-    </group>
+    <item android:title="Overwatch">
+        <menu>
+            <item
+                android:id="@+id/nav_overwatch_signin"
+                android:title="             Sign in" />
+            <item
+                android:id="@+id/nav_overwatch_quickplay"
+                android:title="             Quickplay Stats" />
+            <item
+                android:id="@+id/nav_overwatch_competitive"
+                android:title="             Competitive Stats" />
+        </menu>
+    </item>
+
+    <item android:title="Fortnite">
+        <menu>
+            <item
+                android:id="@+id/nav_fortnite_signin"
+                android:title="             Sign in" />
+            <item
+                android:id="@+id/nav_fortnite_stats"
+                android:title="             Stats" />
+        </menu>
+    </item>
 
 </menu>

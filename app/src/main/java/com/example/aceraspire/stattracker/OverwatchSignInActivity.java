@@ -2,9 +2,6 @@ package com.example.aceraspire.stattracker;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,17 +12,27 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.Toast;
 
-public class FortniteActivity extends AppCompatActivity
+public class OverwatchSignInActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fortnight);
+        setContentView(R.layout.activity_overwatch_signin);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        /*
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+        */
 
         final Button fortniteStats = findViewById(R.id.stats);
         fortniteStats.setOnClickListener(new View.OnClickListener() {
@@ -41,16 +48,6 @@ public class FortniteActivity extends AppCompatActivity
             }
         });
 
-        /*
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        */
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -75,7 +72,7 @@ public class FortniteActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.fortnite, menu);
+        getMenuInflater().inflate(R.menu.ow, menu);
         return true;
     }
 
@@ -102,11 +99,11 @@ public class FortniteActivity extends AppCompatActivity
         if (id == R.id.nav_overwatch) {
             // Handle the overwatch tab action
             // getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new overwatch_frag()).commit();
-            startActivity(new Intent(getApplicationContext(), OWActivity.class));
+            startActivity(new Intent(getApplicationContext(), OverwatchSignInActivity.class));
         } else if (id == R.id.nav_fortnite) {
             // Handle the Fortnite Screens
             // getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new fortnite_frag()).commit();
-            startActivity(new Intent(getApplicationContext(), FortniteActivity.class));
+            startActivity(new Intent(getApplicationContext(), FortniteSignInActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

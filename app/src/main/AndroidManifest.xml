@@ -20,11 +20,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".OWActivity"
+            android:name=".OverwatchSignInActivity"
             android:label="@string/title_activity_ow"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".FortniteActivity"
+            android:name=".FortniteSignInActivity"
             android:label="@string/title_activity_fortnight"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
