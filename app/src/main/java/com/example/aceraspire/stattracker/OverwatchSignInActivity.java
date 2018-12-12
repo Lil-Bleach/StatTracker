@@ -33,7 +33,7 @@ public class OverwatchSignInActivity extends AppCompatActivity
             }
         });
         */
-
+        /*
         final Button fortniteStats = findViewById(R.id.stats);
         fortniteStats.setOnClickListener(new View.OnClickListener() {
             public void onClick(final View v) {
@@ -47,6 +47,7 @@ public class OverwatchSignInActivity extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment2, new overwatch_frag()).commit();
             }
         });
+        */
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

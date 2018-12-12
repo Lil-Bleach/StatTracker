@@ -11,10 +11,10 @@
     <Button
         android:id="@+id/stats"
         android:layout_width="192dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="29dp"
         android:text="Stats"
+        app:layout_constraintBottom_toTopOf="@+id/FN_user"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,20 +22,47 @@
         android:id="@+id/button2"
         android:layout_width="192dp"
         android:layout_height="61dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/stats"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <fragment
-        android:id="@+id/fragment2"
-        android:name="com.example.aceraspire.stattracker.fortnite_frag"
-        android:layout_width="394dp"
-        android:layout_height="640dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+    <Button
+        android:id="@+id/FN_send"
+        android:layout_width="88dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginBottom="21dp"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/FN_output"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FN_user" />
+
+    <EditText
+        android:id="@+id/FN_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintBottom_toTopOf="@+id/FN_send"
+        app:layout_constraintEnd_toEndOf="@+id/stats"
+        app:layout_constraintStart_toEndOf="@+id/stats"
+        app:layout_constraintTop_toBottomOf="@+id/stats" />
+
+    <TextView
+        android:id="@+id/FN_output"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="18dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FN_send" />
 
 </android.support.constraint.ConstraintLayout>
