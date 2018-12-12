@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -123,9 +125,9 @@ public class FortniteSignInActivity extends AppCompatActivity
                 }
             }) {
                 @Override
-                public Map<String, String> getHeaders() {
+                public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String, String>  params = new HashMap<>();
-                    params.put("User-agent", "Mozilla/5.0");
+                    params.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36");
                     params.put("TRN-Api-Key", "c97b3250-39ed-4e3f-a6dc-f558ad1afab7");
                     return params;
                 }
