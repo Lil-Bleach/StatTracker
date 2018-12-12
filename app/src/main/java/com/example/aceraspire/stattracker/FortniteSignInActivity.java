@@ -14,16 +14,26 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;
 
 import org.json.JSONObject;
 
 public class FortniteSignInActivity extends Home
         implements NavigationView.OnNavigationItemSelectedListener {
-    String userinfo;
+    private String userinfo;
     EditText userinfoInput;
     TextView output;
     Button submit;
-
+    private int textboxid;
+    private String url;
+    private static RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +52,14 @@ public class FortniteSignInActivity extends Home
          */
         userinfoInput = (EditText)findViewById(R.id.FN_user);
         output = (TextView)findViewById(R.id.FN_output);
-        submit = (Button)findViewById(R.id.FN_send);
+        submit = (Button) findViewById(R.id.FN_send);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 userinfo = userinfoInput.getText().toString();
-                String url = "https://ow-api.com/v1/stats/pc/us/" + userinfo + "/profile";
-                output.setText(url);
-
+                url = "https://ow-api.com/v1/stats/pc/us/" + userinfo + "/profile";
+                //startAPICall();
+                output.setText("oopsie");
             }
         });
 
@@ -88,6 +98,34 @@ public class FortniteSignInActivity extends Home
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    /**
+     * the API call method
+     */
+    void startAPICall(){
+        return;
+        /**try {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                    Request.Method.GET,
+                    url,
+                    null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(final JSONObject response) {
+                            output.setText(response.toString()); //set text for text view
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(final VolleyError error) {
+                    output.setText("Error");
+                }
+            });
+            requestQueue.add(jsonObjectRequest);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } */
+
     }
 
     @Override
