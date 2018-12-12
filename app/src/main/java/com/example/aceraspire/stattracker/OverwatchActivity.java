@@ -111,7 +111,11 @@ public class OverwatchActivity extends AppCompatActivity
                             oww.setRating(profile.get("rating").getAsInt());
                             oww.setPrestige(profile.get("prestige").getAsInt());
                             oww.setGamesWon(profile.get("gamesWon").getAsInt());
-                            output.setText("Name: " + oww.getName() + "\nLevel: " + (oww.getPrestige() * 100 + oww.getLevel()) + "\nGames Won: " +oww.getGamesWon()  +"\nRating: " + oww.getRating()); //set text for text view
+                            //set text for text view
+                            output.setText("Name: " + oww.getName() +
+                                    "\nLevel: " + (oww.getPrestige() * 100 + oww.getLevel()) +
+                                    "\nGames Won: " + oww.getGamesWon()  +
+                                    "\nRating: " + oww.getRating());
                         }
                     }, new Response.ErrorListener() {
                 @Override
