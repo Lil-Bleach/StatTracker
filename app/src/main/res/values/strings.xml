@@ -12,4 +12,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_fortnite_stats">FortniteStatsActivity</string>
+    <string name="title_activity_overwatch_quickplay">OverwatchQuickplay</string>
+    <string name="title_activity_overwatch_competitive">Overwatch Competitive Stats</string>
 </resources>
