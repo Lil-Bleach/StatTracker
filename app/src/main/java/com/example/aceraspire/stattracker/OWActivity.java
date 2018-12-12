@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class OWActivity extends AppCompatActivity
@@ -35,6 +36,21 @@ public class OWActivity extends AppCompatActivity
             }
         });
         */
+
+        final Button fortniteStats = findViewById(R.id.stats);
+        fortniteStats.setOnClickListener(new View.OnClickListener() {
+            public void onClick(final View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment2, new fortnite_frag()).commit();
+            }
+        });
+
+        final Button owStats = findViewById(R.id.button2);
+        owStats.setOnClickListener(new View.OnClickListener() {
+            public void onClick(final View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment2, new overwatch_frag()).commit();
+            }
+        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -91,15 +107,12 @@ public class OWActivity extends AppCompatActivity
             // Handle the Fortnite Screens
             // getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new fortnite_frag()).commit();
             startActivity(new Intent(getApplicationContext(), FortniteActivity.class));
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-            Toast.makeText(this, "REEEEEEEEEEE", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_send) {
-            Toast.makeText(this, "YEEEEEEEEEET", Toast.LENGTH_SHORT).show();
         }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
