@@ -21,6 +21,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 
 import org.json.JSONObject;
@@ -37,7 +39,7 @@ public class OverwatchSignInActivity extends AppCompatActivity
     /** something idk */
     private static RequestQueue requestQueue;
     /** Json String */
-    private String jsonString;
+    public String jsonString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +104,16 @@ public class OverwatchSignInActivity extends AppCompatActivity
                         @Override
                         public void onResponse(final JSONObject response) {
                             jsonString = response.toString();
-                            output.setText(response.toString()); //set text for text view
+                            JsonParser parser = new JsonParser();
+                            JsonObject profile = parser.parse(jsonString).getAsJsonObject();
+                            ow_profile oww = new ow_profile();
+                            oww.setIcon(profile.get("icon").getAsString());
+                            oww.setName(profile.get("name").getAsString());
+                            oww.setLevel(profile.get("level").getAsInt());
+                            oww.setRating(profile.get("rating").getAsInt());
+                            oww.setPrestige(profile.get("prestige").getAsInt());
+                            oww.setGamesWon(profile.get("gamesWon").getAsInt());
+                            output.setText("Name: " + oww.getName() + "\nLevel: " + (oww.getPrestige() * 100 + oww.getLevel()) + "\nGames Won: " +oww.getGamesWon()  +"\nRating: " + oww.getRating()); //set text for text view
                         }
                     }, new Response.ErrorListener() {
                 @Override
@@ -115,6 +126,9 @@ public class OverwatchSignInActivity extends AppCompatActivity
             e.printStackTrace();
         }
 
+    }
+    public String getJsonString() {
+        return jsonString;
     }
 
     @Override
