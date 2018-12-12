@@ -1,6 +1,8 @@
 package com.example.aceraspire.stattracker;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -25,6 +27,8 @@ import com.google.gson.JsonParser;
 
 import org.json.JSONObject;
 
+import java.net.URL;
+
 public class OverwatchActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -34,6 +38,7 @@ public class OverwatchActivity extends AppCompatActivity
     TextView output;
     Button submit;
     private String url;
+    private String rank_url;
     /** something idk */
     private static RequestQueue requestQueue;
     /** Json String */
@@ -111,6 +116,7 @@ public class OverwatchActivity extends AppCompatActivity
                             oww.setRating(profile.get("rating").getAsInt());
                             oww.setPrestige(profile.get("prestige").getAsInt());
                             oww.setGamesWon(profile.get("gamesWon").getAsInt());
+                            oww.setRatingIcon(profile.get("ratingIcon").getAsString());
                             output.setText("Name: " + oww.getName() + "\nLevel: " + (oww.getPrestige() * 100 + oww.getLevel()) + "\nGames Won: " +oww.getGamesWon()  +"\nRating: " + oww.getRating()); //set text for text view
                         }
                     }, new Response.ErrorListener() {
