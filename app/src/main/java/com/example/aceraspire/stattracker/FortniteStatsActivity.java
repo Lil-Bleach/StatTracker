@@ -2,9 +2,6 @@ package com.example.aceraspire.stattracker;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -58,16 +55,12 @@ public class FortniteStatsActivity extends AppCompatActivity
 
         if (id == R.id.nav_overwatch_signin) {
             // Handle the overwatch tab action
-            startActivity(new Intent(getApplicationContext(), OverwatchSignInActivity.class));
+            startActivity(new Intent(getApplicationContext(), OverwatchActivity.class));
         } else if (id == R.id.nav_fortnite_signin) {
             // Handle the Fortnite Screens
             startActivity(new Intent(getApplicationContext(), FortniteSignInActivity.class));
         } else if (id == R.id.nav_fortnite_stats) {
             startActivity(new Intent(getApplicationContext(), FortniteStatsActivity.class));
-        } else if (id == R.id.nav_overwatch_quickplay) {
-            startActivity(new Intent(getApplicationContext(), OverwatchQuickplay.class));
-        } else if (id == R.id.nav_overwatch_competitive) {
-            startActivity(new Intent(getApplicationContext(), OverwatchCompetitiveActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

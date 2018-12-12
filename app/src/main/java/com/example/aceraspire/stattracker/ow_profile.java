@@ -3,7 +3,7 @@ package com.example.aceraspire.stattracker;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-public class ow_profile extends OverwatchSignInActivity {
+public class ow_profile extends OverwatchActivity {
     public String icon;
     public String name;
     public int level;

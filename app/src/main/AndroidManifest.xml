@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".OverwatchSignInActivity"
+            android:name=".OverwatchActivity"
             android:label="@string/title_activity_ow"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -31,14 +31,6 @@
             android:name=".FortniteStatsActivity"
             android:label="@string/title_activity_fortnite_stats"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".OverwatchQuickplay"
-            android:label="@string/title_activity_overwatch_quickplay"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".OverwatchCompetitiveActivity"
-            android:label="@string/title_activity_overwatch_competitive"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
