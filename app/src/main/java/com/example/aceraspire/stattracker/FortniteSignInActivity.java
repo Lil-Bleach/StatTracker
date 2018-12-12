@@ -23,6 +23,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import org.json.JSONObject;
 
@@ -38,6 +40,7 @@ public class FortniteSignInActivity extends AppCompatActivity
     private int textboxid;
     private String url;
     private static RequestQueue requestQueue;
+    public String jsonString;
 
 
     @Override
@@ -63,7 +66,7 @@ public class FortniteSignInActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 userinfo = userinfoInput.getText().toString();
-                url = "https://api.fortnitetracker.com/v1/profile/pc/" + userinfoInput;
+                url = "https://api.hotslogs.com/Public/Players/1/" + userinfo;
                 System.out.println(url);
                 startAPICall();
             }
@@ -115,7 +118,12 @@ public class FortniteSignInActivity extends AppCompatActivity
                     null,
                     new Response.Listener<JSONObject>() {
                         @Override
-                        public void onResponse(final JSONObject response) {
+                        public void onResponse(final JSONObject response) {jsonString = response.toString();
+                            jsonString = response.toString();
+                            JsonParser parser = new JsonParser();
+                            JsonObject profile = parser.parse(jsonString).getAsJsonObject();
+                            profile2 oww = new profile2();
+
                             output.setText(response.toString()); //set text for text view
                         }
                     }, new Response.ErrorListener() {
