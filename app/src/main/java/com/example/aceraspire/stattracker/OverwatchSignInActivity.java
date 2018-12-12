@@ -35,6 +35,7 @@ public class OverwatchSignInActivity extends AppCompatActivity
     private int textboxid;
     private String url;
     private static RequestQueue requestQueue;
+    protected JSONObject profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +97,7 @@ public class OverwatchSignInActivity extends AppCompatActivity
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(final JSONObject response) {
+                            profile = response;
                             output.setText(response.toString()); //set text for text view
                         }
                     }, new Response.ErrorListener() {

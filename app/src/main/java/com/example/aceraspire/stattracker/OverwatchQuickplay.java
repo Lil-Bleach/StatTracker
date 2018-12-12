@@ -13,9 +13,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
-public class OverwatchQuickplay extends AppCompatActivity
+public class OverwatchQuickplay extends OverwatchSignInActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    TextView testView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,13 @@ public class OverwatchQuickplay extends AppCompatActivity
         setContentView(R.layout.activity_overwatch_quickplay);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        testView = (TextView)findViewById(R.id.textView2);
+        try {
+            testView.setText(profile.get("gamesWon"));
+        } catch (Exception e) {
+            testView.setText("ERROR");
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
