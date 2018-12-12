@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class OverwatchSignInActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -34,21 +35,6 @@ public class OverwatchSignInActivity extends AppCompatActivity
         });
         */
 
-        final Button fortniteStats = findViewById(R.id.stats);
-        fortniteStats.setOnClickListener(new View.OnClickListener() {
-            public void onClick(final View v) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment2, new fortnite_frag()).commit();
-            }
-        });
-
-        final Button owStats = findViewById(R.id.button2);
-        owStats.setOnClickListener(new View.OnClickListener() {
-            public void onClick(final View v) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment2, new overwatch_frag()).commit();
-            }
-        });
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -69,38 +55,16 @@ public class OverwatchSignInActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.ow, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.nav_overwatch) {
+        if (id == R.id.nav_overwatch_signin) {
             // Handle the overwatch tab action
             // getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new overwatch_frag()).commit();
             startActivity(new Intent(getApplicationContext(), OverwatchSignInActivity.class));
-        } else if (id == R.id.nav_fortnite) {
+        } else if (id == R.id.nav_fortnite_signin) {
             // Handle the Fortnite Screens
             // getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new fortnite_frag()).commit();
             startActivity(new Intent(getApplicationContext(), FortniteSignInActivity.class));
