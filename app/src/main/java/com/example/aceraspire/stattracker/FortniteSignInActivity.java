@@ -3,6 +3,7 @@ package com.example.aceraspire.stattracker;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +15,8 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -22,6 +25,9 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class FortniteSignInActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -57,7 +63,7 @@ public class FortniteSignInActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 userinfo = userinfoInput.getText().toString();
-                url = "https://ow-api.com/v1/stats/pc/us/" + userinfo + "/profile";
+                url = "https://api.fortnitetracker.com/v1/profile/pc/" + userinfoInput;
                 System.out.println(url);
                 startAPICall();
             }
@@ -117,7 +123,15 @@ public class FortniteSignInActivity extends AppCompatActivity
                 public void onErrorResponse(final VolleyError error) {
                     output.setText("Ooopsie");
                 }
-            });
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String>  params = new HashMap<>();
+                    params.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36");
+                    params.put("TRN-Api-Key", "c97b3250-39ed-4e3f-a6dc-f558ad1afab7");
+                    return params;
+                }
+            };
             requestQueue.add(jsonObjectRequest);
         } catch (Exception e) {
             e.printStackTrace();
