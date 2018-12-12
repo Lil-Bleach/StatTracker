@@ -63,12 +63,12 @@ public class Home extends AppCompatActivity
 
         if (id == R.id.nav_overwatch_signin) {
             // Handle the overwatch tab action
-            // getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new overwatch_frag()).commit();
             startActivity(new Intent(getApplicationContext(), OverwatchSignInActivity.class));
         } else if (id == R.id.nav_fortnite_signin) {
             // Handle the Fortnite Screens
-            // getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new fortnite_frag()).commit();
             startActivity(new Intent(getApplicationContext(), FortniteSignInActivity.class));
+        } else if (id == R.id.nav_fortnite_stats) {
+            startActivity(new Intent(getApplicationContext(), FortniteStatsActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -67,14 +67,12 @@ public class FortniteSignInActivity extends Home
         final Button fortniteStats = findViewById(R.id.stats);
         fortniteStats.setOnClickListener(new View.OnClickListener() {
             public void onClick(final View v) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment2, new fortnite_frag()).commit();
             }
         });
 
         final Button owStats = findViewById(R.id.button2);
         owStats.setOnClickListener(new View.OnClickListener() {
             public void onClick(final View v) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment2, new overwatch_frag()).commit();
             }
         });
         */
@@ -152,11 +150,9 @@ public class FortniteSignInActivity extends Home
 
         if (id == R.id.nav_overwatch_signin) {
             // Handle the overwatch tab action
-            // getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new overwatch_frag()).commit();
             startActivity(new Intent(getApplicationContext(), OverwatchSignInActivity.class));
         } else if (id == R.id.nav_fortnite_signin) {
             // Handle the Fortnite Screens
-            // getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new fortnite_frag()).commit();
             startActivity(new Intent(getApplicationContext(), FortniteSignInActivity.class));
         }
 
