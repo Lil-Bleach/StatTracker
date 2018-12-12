@@ -2,6 +2,7 @@ package com.example.aceraspire.stattracker;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -25,7 +26,7 @@ import org.json.JSONObject;
 
 import org.json.JSONObject;
 
-public class FortniteSignInActivity extends Home
+public class FortniteSignInActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private String userinfo;
     EditText userinfoInput;
@@ -35,12 +36,14 @@ public class FortniteSignInActivity extends Home
     private String url;
     private static RequestQueue requestQueue;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fortnight_signin);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        requestQueue = Volley.newRequestQueue(this);
 
         /**
          * userinfoinput is the user info
@@ -58,8 +61,8 @@ public class FortniteSignInActivity extends Home
             public void onClick(View v) {
                 userinfo = userinfoInput.getText().toString();
                 url = "https://ow-api.com/v1/stats/pc/us/" + userinfo + "/profile";
-                //startAPICall();
-                output.setText("oopsie");
+                System.out.println(url);
+                startAPICall();
             }
         });
 
@@ -102,8 +105,7 @@ public class FortniteSignInActivity extends Home
      * the API call method
      */
     void startAPICall(){
-        return;
-        /**try {
+        try {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.GET,
                     url,
@@ -116,13 +118,13 @@ public class FortniteSignInActivity extends Home
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(final VolleyError error) {
-                    output.setText("Error");
+                    output.setText("Ooopsie");
                 }
             });
             requestQueue.add(jsonObjectRequest);
         } catch (Exception e) {
             e.printStackTrace();
-        } */
+        }
 
     }
 
