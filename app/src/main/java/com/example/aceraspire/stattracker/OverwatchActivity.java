@@ -21,21 +21,25 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 
 import org.json.JSONObject;
 
-
 public class OverwatchSignInActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
 
     private String userinfo;
     EditText userinfoInput;
     TextView output;
     Button submit;
-    private int textboxid;
     private String url;
+    /** something idk */
     private static RequestQueue requestQueue;
-    protected JSONObject profile;
+    /** Json String */
+    public String jsonString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +67,8 @@ public class OverwatchSignInActivity extends AppCompatActivity
                 url = "https://ow-api.com/v1/stats/pc/us/" + userinfo + "/profile";
                 System.out.println(url);
                 startAPICall();
+
+
             }
         });
         /*
@@ -97,8 +103,17 @@ public class OverwatchSignInActivity extends AppCompatActivity
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(final JSONObject response) {
-                            profile = response;
-                            output.setText(response.toString()); //set text for text view
+                            jsonString = response.toString();
+                            JsonParser parser = new JsonParser();
+                            JsonObject profile = parser.parse(jsonString).getAsJsonObject();
+                            ow_profile oww = new ow_profile();
+                            oww.setIcon(profile.get("icon").getAsString());
+                            oww.setName(profile.get("name").getAsString());
+                            oww.setLevel(profile.get("level").getAsInt());
+                            oww.setRating(profile.get("rating").getAsInt());
+                            oww.setPrestige(profile.get("prestige").getAsInt());
+                            oww.setGamesWon(profile.get("gamesWon").getAsInt());
+                            output.setText("Name: " + oww.getName() + "\nLevel: " + (oww.getPrestige() * 100 + oww.getLevel()) + "\nGames Won: " +oww.getGamesWon()  +"\nRating: " + oww.getRating()); //set text for text view
                         }
                     }, new Response.ErrorListener() {
                 @Override
@@ -111,6 +126,9 @@ public class OverwatchSignInActivity extends AppCompatActivity
             e.printStackTrace();
         }
 
+    }
+    public String getJsonString() {
+        return jsonString;
     }
 
     @Override
@@ -146,4 +164,5 @@ public class OverwatchSignInActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
