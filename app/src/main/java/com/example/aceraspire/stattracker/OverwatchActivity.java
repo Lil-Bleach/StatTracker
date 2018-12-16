@@ -39,6 +39,7 @@ public class OverwatchActivity extends AppCompatActivity
 
 
     private String userinfo;
+    private String hmm;
     EditText userinfoInput;
     TextView output;
     Button submit;
@@ -49,6 +50,7 @@ public class OverwatchActivity extends AppCompatActivity
     private static RequestQueue requestQueue;
     /** Json String */
     public String jsonString;
+    private int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,9 +76,19 @@ public class OverwatchActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 userinfo = userinfoInput.getText().toString();
+                if (userinfo.equals(hmm)) {
+                    output.setText("It's Time to Stop");
+                    count++;
+                    if (count == 4) {
+                        output.setText("gtfo");
+                    }
+                    return;
+                }
+                if (output.getText() != null && output.getText().equals("gtfo")) {
+                    return;
+                }
                 /** the url for the api call */
                 url = "https://ow-api.com/v1/stats/pc/us/" + userinfo + "/profile";
-
                 System.out.println(url);
                 startAPICall();
             }
@@ -126,6 +138,8 @@ public class OverwatchActivity extends AppCompatActivity
                                 output.setText("Invalid Name, ID, or Private Profile" + "\n" + "\nInput format is Name-1123 ");
                                 return;
                             }
+                            hmm = userinfo;
+                            count = 0;
                             oww.setIcon(profile.get("icon").getAsString());
                             oww.setName(profile.get("name").getAsString());
                             oww.setLevel(profile.get("level").getAsInt());

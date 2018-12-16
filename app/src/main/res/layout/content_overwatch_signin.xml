@@ -43,7 +43,7 @@
         android:layout_marginBottom="11dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Masochism-2970"
+        android:text="Mastermind-1790"
         app:layout_constraintBottom_toTopOf="@+id/ow_send"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
