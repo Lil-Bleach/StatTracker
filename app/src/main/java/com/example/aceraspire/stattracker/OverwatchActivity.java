@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -97,7 +99,7 @@ public class OverwatchActivity extends AppCompatActivity
     /**
      * the API call method
      */
-    void startAPICall(){
+    void startAPICall() {
         try {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.GET,
@@ -110,6 +112,12 @@ public class OverwatchActivity extends AppCompatActivity
                             JsonParser parser = new JsonParser();
                             JsonObject profile = parser.parse(jsonString).getAsJsonObject();
                             ow_profile oww = new ow_profile();
+                            try {
+                                oww.setName(profile.get("icon").getAsString());
+                            } catch (NullPointerException e) {
+                                output.setText("Invalid Name, ID, or Private Profile" + "\n" + "\nInput format is Name-1123 ");
+                                return;
+                            }
                             oww.setIcon(profile.get("icon").getAsString());
                             oww.setName(profile.get("name").getAsString());
                             oww.setLevel(profile.get("level").getAsInt());
@@ -117,7 +125,10 @@ public class OverwatchActivity extends AppCompatActivity
                             oww.setPrestige(profile.get("prestige").getAsInt());
                             oww.setGamesWon(profile.get("gamesWon").getAsInt());
                             oww.setRatingIcon(profile.get("ratingIcon").getAsString());
-                            output.setText("Name: " + oww.getName() + "\nLevel: " + (oww.getPrestige() * 100 + oww.getLevel()) + "\nGames Won: " +oww.getGamesWon()  +"\nRating: " + oww.getRating()); //set text for text view
+                            output.setText("Name: " + oww.getName() +
+                                    "\nLevel: " + (oww.getPrestige() * 100 + oww.getLevel()) +
+                                    "\nGames Won: " +oww.getGamesWon()  +
+                                    "\nRating: " + oww.getRating()); //set text for text view
                         }
                     }, new Response.ErrorListener() {
                 @Override
