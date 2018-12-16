@@ -3,6 +3,7 @@ package com.example.aceraspire.stattracker;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.squareup.picasso.Picasso;
 
 
 import org.json.JSONObject;
@@ -39,8 +42,9 @@ public class OverwatchActivity extends AppCompatActivity
     EditText userinfoInput;
     TextView output;
     Button submit;
+    ImageView playerIcon;
+    ImageView rankIcon;
     private String url;
-    private String rank_url;
     /** something idk */
     private static RequestQueue requestQueue;
     /** Json String */
@@ -62,6 +66,8 @@ public class OverwatchActivity extends AppCompatActivity
          *  !!! api call not implemented !!!
          */
         userinfoInput = (EditText)findViewById(R.id.ow_input);
+        playerIcon = (ImageView)findViewById(R.id.ow_ppic);
+        rankIcon = (ImageView)findViewById(R.id.ow_rankicon);
         output = (TextView)findViewById(R.id.ow_output);
         submit = (Button) findViewById(R.id.ow_send);
         submit.setOnClickListener(new View.OnClickListener() {
@@ -70,12 +76,12 @@ public class OverwatchActivity extends AppCompatActivity
                 userinfo = userinfoInput.getText().toString();
                 /** the url for the api call */
                 url = "https://ow-api.com/v1/stats/pc/us/" + userinfo + "/profile";
+
                 System.out.println(url);
                 startAPICall();
-
-
             }
         });
+
         /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +93,7 @@ public class OverwatchActivity extends AppCompatActivity
         });
         */
 
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -95,6 +102,7 @@ public class OverwatchActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
     /**
      * the API call method
@@ -125,11 +133,14 @@ public class OverwatchActivity extends AppCompatActivity
                             oww.setPrestige(profile.get("prestige").getAsInt());
                             oww.setGamesWon(profile.get("gamesWon").getAsInt());
                             oww.setRatingIcon(profile.get("ratingIcon").getAsString());
+                            loadImageFromUrl(oww.getIcon(), playerIcon);
+                            loadImageFromUrl(oww.getRatingIcon(), rankIcon);
                             output.setText("Name: " + oww.getName() +
                                     "\nLevel: " + (oww.getPrestige() * 100 + oww.getLevel()) +
                                     "\nGames Won: " +oww.getGamesWon()  +
                                     "\nRating: " + oww.getRating()); //set text for text view
                         }
+
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(final VolleyError error) {
@@ -141,6 +152,15 @@ public class OverwatchActivity extends AppCompatActivity
             e.printStackTrace();
         }
 
+    }
+    private void loadImageFromUrl(String icon, ImageView here) {
+        try {
+            Picasso.with(this).load(icon).into(here);
+        } catch (IllegalArgumentException e) {
+            Picasso.with(this).load(R.mipmap.ic_launcher).into(here);
+            return;
+        }
+        Picasso.with(this).load(icon).into(here);
     }
     public String getJsonString() {
         return jsonString;
