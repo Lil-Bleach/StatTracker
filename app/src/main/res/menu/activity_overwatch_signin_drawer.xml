@@ -7,11 +7,4 @@
         android:id="@+id/nav_overwatch_signin"
         android:title="Overwatch" />
 
-    <item
-        android:id="@+id/nav_fortnite_signin"
-        android:title="Fortnite" />
-    <item
-        android:id="@+id/nav_fortnite_stats"
-        android:title="Stats" />
-
 </menu>

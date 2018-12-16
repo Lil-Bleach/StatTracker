@@ -23,14 +23,6 @@
             android:name=".OverwatchActivity"
             android:label="@string/title_activity_ow"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".FortniteSignInActivity"
-            android:label="@string/title_activity_fortnight"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".FortniteStatsActivity"
-            android:label="@string/title_activity_fortnite_stats"
-            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
